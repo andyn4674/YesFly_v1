@@ -7,9 +7,9 @@ dotenv.config();
 // connections to database; prevents creating one for each query
 const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
-    ssl: {
-        rejectUnauthorized: false
-    },
+    ssl: process.env.NODE_ENV === "production"
+      ? { rejectUnauthorized: false }
+      : false
 });
 
 // Test connection

@@ -1,14 +1,13 @@
 import cors from "cors";
 import express from "express";
-import dotenv from "dotenv"
+import dotenv from "dotenv";
+import routes from "./routes/index.js";
 
 // fetch dotenv data, hands data to process.env
 dotenv.config();
 console.log("DB URL:", process.env.DATABASE_URL);
 
-
-import pool from "./db";
-
+import pool from "./config/db.js";
 
 // express helps with fetching apis and routing
 const app = express();
@@ -17,6 +16,7 @@ const PORT = process.env.PORT || 3000;
 // middleware - functions that run between request and output - pipeline
 app.use(cors());
 app.use(express.json()); // json parser
+app.use("/api", routes);
 
 // health check - if get request from "/", run function
 app.get("/", (req, res) => res.json({ message: "Operational"}));
