@@ -2,6 +2,7 @@ import cors from "cors";
 import express from "express";
 import dotenv from "dotenv";
 import routes from "./routes/index.js";
+import fetchFaaFacilitiesGrids from "./fetcher/faaFacilities.js";
 
 // fetch dotenv data, hands data to process.env
 dotenv.config();
