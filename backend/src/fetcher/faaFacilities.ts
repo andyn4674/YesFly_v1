@@ -116,9 +116,9 @@ async function fetchFaaFacilitiesGrids(offset: number, max: number) {
           );
         }
       }
-console.log("COMMITTING BATCH");
+      console.log("COMMITTING BATCH");
       await client.query("COMMIT");
-      console.log(`Processed ${data.features.length} records (offset ${offset})`);
+      console.log(`Processed ${data.features.length} FAA Facility Grid Cell records (offset ${offset})`);
     } catch (err) {
       await client.query("ROLLBACK");
       console.error("Error processing batch:", err);
